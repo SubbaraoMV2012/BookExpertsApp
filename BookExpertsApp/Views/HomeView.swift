@@ -11,6 +11,7 @@ struct HomeView: View {
     let user: User
     @EnvironmentObject var viewModel: LoginViewModel
     @StateObject private var pdfViewModel = PDFViewModel()
+    @StateObject private var imagePickerViewModel = ImagePickerViewModel()
 
     var body: some View {
         VStack(spacing: 16) {
@@ -40,6 +41,14 @@ struct HomeView: View {
                         .cornerRadius(10)
                 }
             )
+            
+            NavigationLink(destination: ImagePickerView()) {
+                Text("Image Selection")
+                    .padding()
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+            }
 
 
             Button("Logout") {

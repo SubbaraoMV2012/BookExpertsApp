@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PDFKit
+import UIKit
 
 struct PDFKitView: UIViewRepresentable {
     let url: URL
