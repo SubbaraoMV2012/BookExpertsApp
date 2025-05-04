@@ -26,8 +26,10 @@ struct MyApp: App {
                 if viewModel.isLoading {
                     ProgressView("Loading...")
                 } else if let user = viewModel.user {
-                    HomeView(user: user)
-                        .environmentObject(viewModel)
+                    NavigationView {
+                        HomeView(user: user)
+                            .environmentObject(viewModel)
+                    }
                 } else {
                     LoginView(viewModel: viewModel)
                         .environmentObject(viewModel)

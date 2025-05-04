@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     let user: User
     @EnvironmentObject var viewModel: LoginViewModel
+    @StateObject private var pdfViewModel = PDFViewModel()
 
     var body: some View {
         VStack(spacing: 16) {
@@ -26,6 +27,20 @@ struct HomeView: View {
 
             Text("Email: \(user.email)")
                 .foregroundColor(.secondary)
+            
+            NavigationLink(
+                destination: PDFViewScreen(
+                    urlString: "https://fssservices.bookxpert.co/GeneratedPDF/Companies/nadc/2024-2025/BalanceSheet.pdf"
+                ),
+                label: {
+                    Text("View Balance pdf")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+            )
+
 
             Button("Logout") {
                 viewModel.signOut()
