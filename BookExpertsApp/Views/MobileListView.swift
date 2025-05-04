@@ -20,7 +20,7 @@ struct MobileListView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             Toggle("Enable Notifications", isOn: $notificationsEnabled)
                 .padding(.horizontal)
             
@@ -84,6 +84,7 @@ struct MobileListView: View {
             .buttonStyle(.borderedProminent)
             .padding()
         }
+        .padding(.top, 16)
         .navigationTitle("Mobiles")
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -117,6 +118,4 @@ struct MobileListView: View {
             }
         }
     }
-
-
 }

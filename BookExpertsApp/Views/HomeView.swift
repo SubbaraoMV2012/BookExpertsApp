@@ -33,51 +33,34 @@ struct HomeView: View {
 
                 Text("Email: \(user.email)")
                     .foregroundColor(.secondary)
-
-                VStack(spacing: 16) {
-                    NavigationLink(
-                        destination: PDFViewScreen(
-                            urlString: "https://fssservices.bookxpert.co/GeneratedPDF/Companies/nadc/2024-2025/BalanceSheet.pdf"
-                        ),
-                        label: {
-                            Text("View Balance pdf")
-                                .padding()
-                                .background(Color.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
-                        }
-                    )
-                    
-                    NavigationLink(destination: ImagePickerView()) {
-                        Text("Image Selection")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    
-                    NavigationLink(destination: MobileListView(mobileStoreProtocol: mobileStoreProtocol)) {
-                        Text("Mobile List")
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                }
-                
-                Spacer()
             }
             .padding()
             .navigationTitle("Home")
             .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        viewModel.signOut()
-                    }) {
-                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                            .foregroundColor(.red)
+                    Menu {
+                        NavigationLink(destination: PDFViewScreen(
+                            urlString: "https://fssservices.bookxpert.co/GeneratedPDF/Companies/nadc/2024-2025/BalanceSheet.pdf"
+                        )) {
+                            Text("View Balance PDF")
+                        }
+                        NavigationLink(destination: ImagePickerView()) {
+                            Text("Image Selection")
+                        }
+                        NavigationLink(destination: MobileListView(mobileStoreProtocol: mobileStoreProtocol)) {
+                            Text("Mobile List")
+                        }
+                        Button("Signout") {
+                            viewModel.signOut()
+                        }
+                    } label: {
+                        Image(systemName: "ellipsis.circle")
+                            .foregroundColor(.blue)
+                            .font(.title)
                     }
+
                 }
             }
         }

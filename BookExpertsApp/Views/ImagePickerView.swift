@@ -51,6 +51,9 @@ struct ImagePickerView: View {
                 selectedImage: $viewModel.selectedImage
             )
         }
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Permission Denied"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
+        }
         .navigationTitle("Image Selection")
     }
 }
