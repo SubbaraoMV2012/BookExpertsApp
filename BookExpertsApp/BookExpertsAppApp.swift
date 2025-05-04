@@ -18,6 +18,11 @@ struct MyApp: App {
     init() {
         let loginViewModel = LoginViewModel(authService: authService, userStore: userStore)
         _viewModel = StateObject(wrappedValue: loginViewModel)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.clear]
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 
     var body: some Scene {
