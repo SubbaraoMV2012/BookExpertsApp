@@ -12,6 +12,9 @@ struct HomeView: View {
     @EnvironmentObject var viewModel: LoginViewModel
     @StateObject private var pdfViewModel = PDFViewModel()
     @StateObject private var imagePickerViewModel = ImagePickerViewModel()
+    private var mobileStoreProtocol: MobileStoreProtocol {
+        CoreDataMobileStore(context: PersistenceController.shared.container.viewContext)
+    }
 
     var body: some View {
         VStack(spacing: 16) {
@@ -49,6 +52,14 @@ struct HomeView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+            
+            NavigationLink(destination: MobileListView(mobileStoreProtocol: mobileStoreProtocol)) {
+                           Text("Mobile List")
+                               .padding()
+                               .background(Color.green)
+                               .foregroundColor(.white)
+                               .cornerRadius(10)
+                       }
 
 
             Button("Logout") {
