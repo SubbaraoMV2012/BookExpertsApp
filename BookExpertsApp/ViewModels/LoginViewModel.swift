@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import FirebaseAuth
 import UIKit
+import CoreData
 
 @MainActor
 final class LoginViewModel: ObservableObject {
@@ -20,28 +22,58 @@ final class LoginViewModel: ObservableObject {
     init(authService: AuthServiceProtocol, userStore: UserStoreProtocol) {
         self.authService = authService
         self.userStore = userStore
+        loadUser()
     }
-
-    func signIn(presenting: UIViewController) {
+    
+    func signIn() {
         Task {
             isLoading = true
+
             do {
-                let user = try await authService.signInWithGoogle(presenting: presenting)
+                let rootVC: UIViewController = try await MainActor.run {
+                    guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                          let rootVC = windowScene.windows.first?.rootViewController else {
+                        throw NSError(domain: "UI", code: -1, userInfo: [NSLocalizedDescriptionKey: "Cannot access root view controller"])
+                    }
+                    return rootVC
+                }
+
+                let user = try await authService.signInWithGoogle(presenting: rootVC)
                 try userStore.save(user: user)
                 self.user = user
                 errorMessage = nil
             } catch {
                 errorMessage = error.localizedDescription
             }
+
             isLoading = false
         }
     }
-
-    func loadUser() {
+    
+    private func loadUser() {
         do {
-            user = try userStore.fetchUser()
+            self.user = try userStore.fetchUser()
         } catch {
-            errorMessage = error.localizedDescription
+            print("Failed to load user: \(error.localizedDescription)")
+            self.user = nil
         }
     }
+
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            try deleteStoredUser()
+            self.user = nil
+        } catch {
+            errorMessage = "Failed to sign out: \(error.localizedDescription)"
+        }
+    }
+
+    private func deleteStoredUser() throws {
+        let request: NSFetchRequest<NSFetchRequestResult> = CDUser.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        try (userStore as? CoreDataUserStore)?.context.execute(deleteRequest)
+        try (userStore as? CoreDataUserStore)?.context.save()
+    }
 }
+

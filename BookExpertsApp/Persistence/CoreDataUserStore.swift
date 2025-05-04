@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 
 final class CoreDataUserStore: UserStoreProtocol {
-    private let context: NSManagedObjectContext
+    let context: NSManagedObjectContext
 
     init(context: NSManagedObjectContext) {
         self.context = context

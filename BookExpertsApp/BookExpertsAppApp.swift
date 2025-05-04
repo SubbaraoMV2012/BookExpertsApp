@@ -11,15 +11,28 @@ import SwiftUI
 struct MyApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     let persistence = PersistenceController.shared
+    private let authService = FirebaseAuthService()
+    private let userStore = CoreDataUserStore(context: PersistenceController.shared.container.viewContext)
+    @StateObject private var viewModel: LoginViewModel
+
+    init() {
+        let loginViewModel = LoginViewModel(authService: authService, userStore: userStore)
+        _viewModel = StateObject(wrappedValue: loginViewModel)
+    }
 
     var body: some Scene {
         WindowGroup {
-            LoginView(
-                viewModel: LoginViewModel(
-                    authService: FirebaseAuthService(),
-                    userStore: CoreDataUserStore(context: persistence.container.viewContext)
-                )
-            )
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading...")
+                } else if let user = viewModel.user {
+                    HomeView(user: user)
+                        .environmentObject(viewModel)
+                } else {
+                    LoginView(viewModel: viewModel)
+                        .environmentObject(viewModel)
+                }
+            }
         }
     }
 }
