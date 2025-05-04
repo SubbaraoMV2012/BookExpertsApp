@@ -42,6 +42,7 @@ final class LoginViewModel: ObservableObject {
                 try userStore.save(user: user)
                 self.user = user
                 errorMessage = nil
+                requestNotificationPermission()
             } catch {
                 errorMessage = error.localizedDescription
             }
@@ -74,6 +75,16 @@ final class LoginViewModel: ObservableObject {
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
         try (userStore as? CoreDataUserStore)?.context.execute(deleteRequest)
         try (userStore as? CoreDataUserStore)?.context.save()
+    }
+    
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print("Notification permission error: \(error.localizedDescription)")
+            } else {
+                print("Notification permission granted: \(granted)")
+            }
+        }
     }
 }
 

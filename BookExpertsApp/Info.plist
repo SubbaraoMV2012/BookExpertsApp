@@ -6,6 +6,8 @@
 	<string>This app needs access to the camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs access to your photo library</string>
+	<key>FirebaseAppDelegateProxyEnabled</key>
+	<false/>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

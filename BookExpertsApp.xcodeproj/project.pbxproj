@@ -9,13 +9,11 @@
 /* Begin PBXBuildFile section */
 		5239F2C42DC7446300CCA208 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F2C32DC7446300CCA208 /* GoogleSignIn */; };
 		5239F2C62DC7446300CCA208 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F2C52DC7446300CCA208 /* GoogleSignInSwift */; };
-		529AA8FC2DC739480017120A /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA8FB2DC739480017120A /* FirebaseAnalytics */; };
-		529AA8FE2DC739480017120A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA8FD2DC739480017120A /* FirebaseAuth */; };
-		529AA9002DC739480017120A /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA8FF2DC739480017120A /* FirebaseCore */; };
-		529AA9022DC739480017120A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA9012DC739480017120A /* FirebaseFirestore */; };
-		529AA9042DC739480017120A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA9032DC739480017120A /* FirebaseMessaging */; };
-		529AA9062DC739480017120A /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA9052DC739480017120A /* FirebaseRemoteConfig */; };
-		529AA9082DC739480017120A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 529AA9072DC739480017120A /* FirebaseStorage */; };
+		5239F34D2DC7E2E200CCA208 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F34C2DC7E2E200CCA208 /* FirebaseAuth */; };
+		5239F34F2DC7E2E200CCA208 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F34E2DC7E2E200CCA208 /* FirebaseCore */; };
+		5239F3512DC7E2E200CCA208 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F3502DC7E2E200CCA208 /* FirebaseFirestore */; };
+		5239F3532DC7E2E200CCA208 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F3522DC7E2E200CCA208 /* FirebaseFunctions */; };
+		5239F3552DC7E2E200CCA208 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5239F3542DC7E2E200CCA208 /* FirebaseMessaging */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,14 +76,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5239F2C62DC7446300CCA208 /* GoogleSignInSwift in Frameworks */,
-				529AA8FC2DC739480017120A /* FirebaseAnalytics in Frameworks */,
+				5239F34D2DC7E2E200CCA208 /* FirebaseAuth in Frameworks */,
+				5239F3552DC7E2E200CCA208 /* FirebaseMessaging in Frameworks */,
+				5239F34F2DC7E2E200CCA208 /* FirebaseCore in Frameworks */,
+				5239F3532DC7E2E200CCA208 /* FirebaseFunctions in Frameworks */,
+				5239F3512DC7E2E200CCA208 /* FirebaseFirestore in Frameworks */,
 				5239F2C42DC7446300CCA208 /* GoogleSignIn in Frameworks */,
-				529AA9022DC739480017120A /* FirebaseFirestore in Frameworks */,
-				529AA9042DC739480017120A /* FirebaseMessaging in Frameworks */,
-				529AA9062DC739480017120A /* FirebaseRemoteConfig in Frameworks */,
-				529AA9082DC739480017120A /* FirebaseStorage in Frameworks */,
-				529AA9002DC739480017120A /* FirebaseCore in Frameworks */,
-				529AA8FE2DC739480017120A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,15 +142,13 @@
 			);
 			name = BookExpertsApp;
 			packageProductDependencies = (
-				529AA8FB2DC739480017120A /* FirebaseAnalytics */,
-				529AA8FD2DC739480017120A /* FirebaseAuth */,
-				529AA8FF2DC739480017120A /* FirebaseCore */,
-				529AA9012DC739480017120A /* FirebaseFirestore */,
-				529AA9032DC739480017120A /* FirebaseMessaging */,
-				529AA9052DC739480017120A /* FirebaseRemoteConfig */,
-				529AA9072DC739480017120A /* FirebaseStorage */,
 				5239F2C32DC7446300CCA208 /* GoogleSignIn */,
 				5239F2C52DC7446300CCA208 /* GoogleSignInSwift */,
+				5239F34C2DC7E2E200CCA208 /* FirebaseAuth */,
+				5239F34E2DC7E2E200CCA208 /* FirebaseCore */,
+				5239F3502DC7E2E200CCA208 /* FirebaseFirestore */,
+				5239F3522DC7E2E200CCA208 /* FirebaseFunctions */,
+				5239F3542DC7E2E200CCA208 /* FirebaseMessaging */,
 			);
 			productName = BookExpertsApp;
 			productReference = 529AA8B12DC732120017120A /* BookExpertsApp.app */;
@@ -239,8 +233,8 @@
 			mainGroup = 529AA8A82DC732120017120A;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5239F2C22DC7446300CCA208 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 529AA8B22DC732120017120A /* Products */;
@@ -440,10 +434,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookExpertsApp/BookExpertsApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookExpertsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = KC7LY3AX4Y;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookExpertsApp/Info.plist;
@@ -459,6 +455,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookexpert.bookexpertsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -470,10 +467,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = BookExpertsApp/BookExpertsApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BookExpertsApp/Preview Content\"";
-				DEVELOPMENT_TEAM = KC7LY3AX4Y;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BookExpertsApp/Info.plist;
@@ -489,6 +488,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bookexpert.bookexpertsapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -617,7 +617,7 @@
 				minimumVersion = 8.0.0;
 			};
 		};
-		529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
@@ -638,40 +638,30 @@
 			package = 5239F2C22DC7446300CCA208 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
 			productName = GoogleSignInSwift;
 		};
-		529AA8FB2DC739480017120A /* FirebaseAnalytics */ = {
+		5239F34C2DC7E2E200CCA208 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		529AA8FD2DC739480017120A /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		529AA8FF2DC739480017120A /* FirebaseCore */ = {
+		5239F34E2DC7E2E200CCA208 /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		529AA9012DC739480017120A /* FirebaseFirestore */ = {
+		5239F3502DC7E2E200CCA208 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
 		};
-		529AA9032DC739480017120A /* FirebaseMessaging */ = {
+		5239F3522DC7E2E200CCA208 /* FirebaseFunctions */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+		5239F3542DC7E2E200CCA208 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5239F34B2DC7E2E200CCA208 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
-		};
-		529AA9052DC739480017120A /* FirebaseRemoteConfig */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseRemoteConfig;
-		};
-		529AA9072DC739480017120A /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 529AA8FA2DC739480017120A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
